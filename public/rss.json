@@ -1,0 +1,15 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "porter.cat",
+    "home_page_url": "https://porter.cat",
+    "feed_url": "https://porter.cat/rss.json",
+    "description": "I'm Porter, a software engineer and designer. I write about web development, networking, and other things I find interesting.",
+    "items": [
+        {
+            "url": "https://porter.cat/blog/hello",
+            "title": "Lets see what we can do with rehype pretty code",
+            "summary": "Syntax highlighting, line numbers, line highlights, word highlights oh boy!",
+            "date_modified": "2024-03-04T00:00:00.000Z"
+        }
+    ]
+}
