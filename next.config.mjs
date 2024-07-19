@@ -35,7 +35,6 @@ class VeliteRssPlugin {
       if (VeliteRssPlugin.started) return;
       VeliteRssPlugin.rendered++;
       VeliteRssPlugin.started = true;
-      console.log('help!');
       const postFiles = readFileSync('./.velite/posts.json', 'utf-8');
       const posts = JSON.parse(postFiles);
 

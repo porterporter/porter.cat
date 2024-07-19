@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import type { Metadata, Viewport } from 'next';
 import LocalFont from 'next/font/local';
 
-import Head from 'next/head';
 import './globals.css';
 
 const maple = LocalFont({
@@ -28,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <link
           rel="alternate"
           type="application/atom+xml"
@@ -47,7 +46,7 @@ export default function RootLayout({
           href="rss.json"
           title="porter.cat"
         />
-      </Head>
+      </head>
       <body
         className={cn(
           'flex min-h-dvh flex-col font-maple antialiased',
