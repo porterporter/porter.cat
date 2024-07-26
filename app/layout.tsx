@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@/components/theme-provider';
 import Header from '@/components/top';
 import { cn } from '@/lib/utils';
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import LocalFont from 'next/font/local';
 
 import './globals.css';
@@ -10,8 +10,6 @@ const maple = LocalFont({
   src: '../public/MapleMono-Regular.woff2',
   variable: '--font-maple',
 });
-
-export const metadata: Metadata = {};
 
 export const viewport: Viewport = {
   themeColor: [
