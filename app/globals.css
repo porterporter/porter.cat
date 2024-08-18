@@ -82,6 +82,7 @@ h4,
 h5,
 h6,
 p,
-span {
+span,
+div {
   @apply text-balance;
 }

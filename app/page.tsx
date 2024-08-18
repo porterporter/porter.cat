@@ -7,25 +7,27 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="flex flex-col gap-2 self-center text-center">
+    <section className="flex flex-col gap-2 self-center rounded-lg bg-[#26262e] p-4">
       <h1 className="text-2xl font-normal">
-        Hello! I&apos;m Porter, an indie developer attending UW-Madison.
+        Hi! I&apos;m Porter, an indie developer attending UW-Madison.
       </h1>
+      <p>Check out some of my recent projects:</p>
       <p>
-        Right now, I&apos;m working on a few projects, including{' '}
         <Link
           className="italic underline"
           href="https://github.com/porterporter/OrangeJuice"
         >
-          Minecraft Forge Mods for 1.8.9
+          1.8.9 Forge mods
         </Link>{' '}
         <Link
           className="italic underline"
           href="https://github.com/porterporter/SimpleRewardClaim"
         >
           (2)
-        </Link>{' '}
-        and web design and cable networking for{' '}
+        </Link>
+      </p>
+      <p>
+        Web design and cable networking for{' '}
         <Link className="italic underline" href="https://thefeiring.com">
           The Feiring
         </Link>
