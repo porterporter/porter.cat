@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>porter.cat</id>
     <title>porter.cat</title>
-    <updated>2024-09-04T23:14:20.635Z</updated>
+    <updated>2024-09-04T23:54:20.211Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://porter.cat"/>
     <link rel="self" href="https://porter.cat/atom.xml"/>

@@ -35,5 +35,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# velite files 
+# velite files
 .velite
+
+content/posts/**/*
+!content/posts/placeholder.txt
