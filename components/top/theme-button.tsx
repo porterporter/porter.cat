@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { useHotkeys } from '@mantine/hooks';
 import { Cloudy, Loader, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -29,8 +30,19 @@ function ThemeButton({ className }: ThemeButtonProps) {
   const { reward } = useReward('reward', 'confetti', {
     angle: 222,
     spread: 125,
-    elementCount: 80
+    elementCount: 80,
   });
+
+  useHotkeys([
+    [
+      'mod+B',
+      () => {
+        if (!theme) return;
+        setClicked(clicked + 1);
+        setTheme(themes[theme].next ?? 'system');
+      },
+    ],
+  ]);
 
   if (!hasMounted) return <PlaceHolder className={className} />;
   if (!theme)
@@ -47,16 +59,15 @@ function ThemeButton({ className }: ThemeButtonProps) {
     <Button
       variant="ghost"
       className={className}
-      id='reward'
+      id="reward"
       onClick={() => {
         setClicked(clicked + 1);
         setTheme(nextTheme ?? 'system');
-        if(clicked < 2) reward();
+        if (clicked < 2) reward();
       }}
     >
       {themes[theme]?.icon ?? <Cloudy />}
       <span className="sr-only">Theme Toggle</span>
-
     </Button>
   );
 }

@@ -4,7 +4,7 @@
         <title>porter.cat</title>
         <link>https://porter.cat</link>
         <description>I'm Porter, a software engineer and designer. I write about web development, networking, and other things I find interesting.</description>
-        <lastBuildDate>Mon, 26 Aug 2024 18:35:03 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 04 Sep 2024 23:14:20 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>© 2024, Porter</copyright>
@@ -12,8 +12,15 @@
             <title><![CDATA[Lets see what we can do with rehype pretty code]]></title>
             <link>https://porter.cat/blog/hello</link>
             <guid>hello</guid>
-            <pubDate>Mon, 04 Mar 2024 00:00:00 GMT</pubDate>
+            <pubDate>Tue, 05 Mar 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Syntax highlighting, line numbers, line highlights, word highlights oh boy!]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Git: This repository has moved. Please use the new location...]]></title>
+            <link>https://porter.cat/blog/new-repo-location</link>
+            <guid>new-repo-location</guid>
+            <pubDate>Wed, 26 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[What to do when you change your git repo url on GitHub or other providers]]></description>
         </item>
     </channel>
 </rss>

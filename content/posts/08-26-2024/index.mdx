@@ -1,0 +1,43 @@
+---
+title: 'Git: This repository has moved. Please use the new location...'
+description: What to do when you change your git repo url on GitHub or other providers
+date: 2024-06-26
+slug: new-repo-location
+---
+
+```zsh /This repository moved. Please use the new location:/
+porter ❯ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 399 bytes | 399.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/porterporter/porter.cat.git
+To https://github.com/porterporter/porter-cat.git
+   ff5a47f..c2935c4  main -> main
+```
+
+Seen this error? You've changed the URL of your repository on git provider. Here's how to fix it.
+
+```zsh
+porter ❯ git remote get-url origin --all
+https://github.com/porterporter/porter-cat.git
+```
+
+`git remote get-url origin --all` will list the origin url you're pushing to. When you change the URL of your repository, the old URL will warn you to switch it to the new one on git.
+
+When you push, the new URL warning will actually tell you where to update it to as well
+
+```zsh caption="This line right here"
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/porterporter/porter.cat.git
+```
+
+To fix, just update your origin url with the command
+
+```zsh
+git remote set-url origin https://github.com/porterporter/porter.cat.git
+```

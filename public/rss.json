@@ -1,15 +1,21 @@
 {
-    "version": "https://jsonfeed.org/version/1",
-    "title": "porter.cat",
-    "home_page_url": "https://porter.cat",
-    "feed_url": "https://porter.cat/rss.json",
-    "description": "I'm Porter, a software engineer and designer. I write about web development, networking, and other things I find interesting.",
-    "items": [
-        {
-            "url": "https://porter.cat/blog/hello",
-            "title": "Lets see what we can do with rehype pretty code",
-            "summary": "Syntax highlighting, line numbers, line highlights, word highlights oh boy!",
-            "date_modified": "2024-03-04T00:00:00.000Z"
-        }
-    ]
+  "version": "https://jsonfeed.org/version/1",
+  "title": "porter.cat",
+  "home_page_url": "https://porter.cat",
+  "feed_url": "https://porter.cat/rss.json",
+  "description": "I'm Porter, a software engineer and designer. I write about web development, networking, and other things I find interesting.",
+  "items": [
+    {
+      "url": "https://porter.cat/blog/hello",
+      "title": "Lets see what we can do with rehype pretty code",
+      "summary": "Syntax highlighting, line numbers, line highlights, word highlights oh boy!",
+      "date_modified": "2024-03-05T00:00:00.000Z"
+    },
+    {
+      "url": "https://porter.cat/blog/new-repo-location",
+      "title": "Git: This repository has moved. Please use the new location...",
+      "summary": "What to do when you change your git repo url on GitHub or other providers",
+      "date_modified": "2024-06-26T00:00:00.000Z"
+    }
+  ]
 }

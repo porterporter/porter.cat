@@ -53,7 +53,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Header />
-          <div className="container flex h-full max-w-5xl flex-grow py-6">
+          <div className="container flex h-full max-w-5xl flex-grow justify-center py-6">
             {children}
           </div>
         </ThemeProvider>
