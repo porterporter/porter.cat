@@ -2,7 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'porter.cat',
+  title: 'Porter Milton | porter.cat',
+  keywords: [
+    'porter',
+    'porter.cat',
+    'porter milton',
+    'juiceboy',
+    'the feiring',
+  ],
 };
 
 export default function Home() {
