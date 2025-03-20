@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/layout.astro';
+
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('writing');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'writing'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout
+	class="prose prose-invert max-w-none text-balance prose-headings:m-0"
+	title={post.data.title ?? post.id}
+>
+	<Content />
+</Layout>

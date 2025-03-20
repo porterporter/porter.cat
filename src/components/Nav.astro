@@ -1,0 +1,46 @@
+---
+const path = Astro.url.pathname;
+---
+
+<nav class="flex flex-col gap-4 border-r border-gray-300 pr-4 h-max mr-4">
+	{
+		path === '/' ? (
+			'porter milton'
+		) : (
+			<a
+				class="visited:red visited:italic hover:bg-foreground hover:text-background transition-colors duration-250 w-max"
+				href="/"
+			>
+				porter milton
+			</a>
+		)
+	}
+	<a
+		class="visited:italic hover:bg-foreground hover:text-background transition-colors duration-250 w-max"
+		href="/writing"
+	>
+		writing
+	</a>
+	<a
+		class="visited:italic hover:bg-foreground hover:text-background transition-colors duration-250 w-max"
+		href="/work"
+	>
+		work
+	</a>
+	<a
+		class="visited:italic hover:bg-foreground hover:text-background transition-colors duration-250 w-max"
+		target="_blank"
+		rel="noopener noreferrer"
+		href="https://github.com/porterporter"
+	>
+		github
+	</a>
+	<a
+		class="visited:italic hover:bg-foreground hover:text-background transition-colors duration-250 w-max"
+		target="_blank"
+		rel="noopener noreferrer"
+		href="https://last.fm/user/portermilton"
+	>
+		last.fm
+	</a>
+</nav>

@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/layout.astro';
+
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('writing')).sort(
+	(a, b) => b.data.published.valueOf() - a.data.published.valueOf()
+);
+
+const formatter = new Intl.DateTimeFormat('en-US', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<Layout title="writing">
+	<main>
+		<ul>
+			{
+				posts.map((post) => (
+					<li>
+						<a
+							href={`/writing/${post.id}/`}
+							class="underline"
+							data-astro-prefetch="viewport"
+						>
+							<p class="title">
+								{post.data.title ?? post.id}
+								<span class="text-gray-400">
+									({formatter.format(post.data.published)})
+								</span>
+							</p>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</Layout>
