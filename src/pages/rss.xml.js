@@ -14,7 +14,7 @@ export async function GET(context) {
 			return {
 				pubDate: post.data.published,
 				title: post.data.title ?? post.id,
-				description: post.data.description,
+				description: body,
 				link: `/writing/${post.id}/`,
 			};
 		}),
