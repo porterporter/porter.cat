@@ -14,26 +14,24 @@ const formatter = new Intl.DateTimeFormat('en-US', {
 ---
 
 <Layout title="writing">
-	<main>
-		<ul>
-			{
-				posts.map((post) => (
-					<li>
-						<a
-							href={`/writing/${post.id}/`}
-							class="underline"
-							data-astro-prefetch="viewport"
-						>
-							<p class="title">
-								{post.data.title ?? post.id}
-								<span class="text-gray-400">
-									({formatter.format(post.data.published)})
-								</span>
-							</p>
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</main>
+	<ul>
+		{
+			posts.map((post) => (
+				<li class="mb-1">
+					<a
+						href={`/writing/${post.id}/`}
+						class="underline"
+						data-astro-prefetch="viewport"
+					>
+						<p class="title">
+							{post.data.title ?? post.id}
+							<span class="text-gray-400">
+								({formatter.format(post.data.published)})
+							</span>
+						</p>
+					</a>
+				</li>
+			))
+		}
+	</ul>
 </Layout>

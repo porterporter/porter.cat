@@ -1,8 +1,18 @@
 ---
+import clsx from 'clsx';
+
+interface Props {
+	class?: string;
+}
 const path = Astro.url.pathname;
 ---
 
-<nav class="flex flex-col gap-4 border-r border-gray-300 pr-4 h-max mr-4">
+<nav
+	class={clsx(
+		Astro.props.class,
+		'flex flex-col gap-4 md:border-r border-gray-300 md:pr-4 pb-4 md:pb-0 h-max md:mr-4 mb-4 md:mb-0 border-b md:border-b-0 border-r-0'
+	)}
+>
 	{
 		path === '/' ? (
 			'porter milton'

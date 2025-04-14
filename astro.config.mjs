@@ -10,36 +10,37 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://porter.cat',
-  integrations: [mdx(), sitemap()],
+	site: 'https://porter-astro.vercel.app',
+	integrations: [mdx(), sitemap()],
 
-  vite: {
-      plugins: [tailwindcss()],
-      build: {
-          minify: false,
-          sourcemap: 'inline',
-      },
+	vite: {
+		plugins: [tailwindcss()],
+		build: {
+			minify: false,
+			sourcemap: 'inline',
+		},
 	},
 
-  prefetch: {
-      prefetchAll: true,
+	prefetch: {
+		prefetchAll: true,
 	},
 
-  markdown: {
-      remarkPlugins: [],
-      rehypePlugins: [
-          rehypeSlug,
-          [
-              rehypeAutolinkHeadings,
-              {
-                  behavior: 'wrap',
-                  properties: {
-                      className: 'anchor',
-                  },
-              },
-          ],
-      ],
+	markdown: {
+		rehypePlugins: [
+			rehypeSlug,
+			[
+				rehypeAutolinkHeadings,
+				{
+					behavior: 'wrap',
+					properties: {
+						className: 'heading',
+					},
+				},
+			],
+		],
 	},
 
-  adapter: vercel(),
+	adapter: vercel({
+		edgeMiddleware: true,
+	}),
 });

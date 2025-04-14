@@ -1,0 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import gray from './IMG_3186.png';
+---
+
+<div class="bg-gray-800 flex rounded-2xl p-4 gap-2 w-full my-2">
+	<Image src={gray} alt="photo of gray!" class="!w-16 !my-0" />
+	<div><slot /></div>
+</div>

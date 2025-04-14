@@ -24,9 +24,9 @@ import clsx from 'clsx';
 			{Astro.props.title ? `${Astro.props.title} | porter` : 'porter'}
 		</title>
 	</head>
-	<body class="font-serif p-4 flex max-h-dvh">
-		<Nav />
-		<main class={clsx(Astro.props.class, 'overflow-y-scroll')}>
+	<body class="font-serif p-4 flex max-h-dvh flex-col md:flex-row">
+		<Nav class="items-center md:items-start" />
+		<main class={clsx(Astro.props.class, 'md:overflow-y-scroll')}>
 			<slot />
 		</main>
 	</body>

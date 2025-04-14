@@ -1,0 +1,20 @@
+---
+import type { ImageMetadata } from 'astro';
+import clsx from 'clsx';
+
+interface Props {
+	image: ImageMetadata;
+	class?: string;
+	float?: 'left' | 'right';
+}
+---
+
+<div
+	class={clsx(
+		'border border-red flex not-prose-headings:p-0',
+		Astro.props.float === 'right' ? 'flex-row-reverse' : 'flex-row'
+	)}
+>
+	<img src={Astro.props.image.src} />
+	<div><slot /></div>
+</div>
