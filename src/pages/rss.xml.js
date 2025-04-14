@@ -8,7 +8,7 @@ export async function GET(context) {
 		description: 'my homepage, blog, and portfolio',
 		site: context.site,
 		items: posts.map((post) => {
-			const body =
+			let body =
 				post.description ?? post.body.split('\n').slice(0, 5).join('\n');
 			body += `\n<a href="/writing/${post.id}/">[Read the rest here]</a>`;
 			return {
