@@ -1,5 +1,8 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import { experimental_AstroContainer } from 'astro/container';
+
+const container = await experimental_AstroContainer.create();
 
 export async function GET(context) {
 	const posts = await getCollection('writing');
@@ -7,14 +10,14 @@ export async function GET(context) {
 		title: 'porter',
 		description: 'my homepage, blog, and portfolio',
 		site: context.site,
-		items: posts.map((post) => {
-			let body =
-				post.description ?? post.body.split('\n').slice(0, 5).join('\n');
-			body += `\n<a href="/writing/${post.id}/">[Read the rest here]</a>`;
+		items: posts.map(async (post) => {
+			const data = await container.renderToString(render(post));
+			let body = data.split('\n').slice(0, 10).join('\n');
+			body += `...<br /><a href="/writing/${post.id}/">[Read the rest here]</a>`;
 			return {
 				pubDate: post.data.published,
 				title: post.data.title ?? post.id,
-				description: body,
+				content: body,
 				link: `/writing/${post.id}/`,
 			};
 		}),
