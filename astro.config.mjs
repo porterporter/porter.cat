@@ -12,6 +12,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
 	site: 'https://porter-astro.vercel.app',
 	integrations: [mdx(), sitemap()],
+	output: 'static',
 
 	vite: {
 		plugins: [tailwindcss()],
@@ -26,6 +27,7 @@ export default defineConfig({
 	},
 
 	markdown: {
+		gfm: true,
 		rehypePlugins: [
 			rehypeSlug,
 			[
