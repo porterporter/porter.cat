@@ -10,7 +10,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://porter-astro.vercel.app',
+	site: 'https://porter.cat',
 	integrations: [mdx(), sitemap()],
 	output: 'static',
 
@@ -18,7 +18,10 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 		build: {
 			minify: false,
-			sourcemap: 'inline',
+
+		},
+		server: {
+			allowedHosts: ['.local']
 		},
 	},
 

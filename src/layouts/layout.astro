@@ -9,23 +9,23 @@ import Nav from '@/components/Nav.astro';
 import clsx from 'clsx';
 ---
 
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link href='/favicon.ico' rel='icon' />
 		<link
-			rel="alternate"
-			type="application/rss+xml"
-			title="porter"
-			href="/rss.xml"
+			rel='alternate'
+			type='application/rss+xml'
+			title='porter'
+			href='/rss.xml'
 		/>
 		<title>
 			{Astro.props.title ? `${Astro.props.title} | porter` : 'porter'}
 		</title>
 	</head>
-	<body class="font-serif p-4 flex max-h-dvh flex-col md:flex-row">
-		<Nav class="items-center md:items-start" />
+	<body class='font-serif p-4 flex max-h-dvh flex-col md:flex-row'>
+		<Nav class='items-center md:items-start' />
 		<main class={clsx(Astro.props.class, 'md:overflow-y-scroll')}>
 			<slot />
 		</main>
