@@ -1,0 +1,4 @@
+porter.cat {
+    root * dist
+    file_server
+}

@@ -6,22 +6,18 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import tailwindcss from '@tailwindcss/vite';
 
-import vercel from '@astrojs/vercel';
-
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://porter.cat',
 	integrations: [mdx(), sitemap()],
 	output: 'static',
-
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
 			minify: false,
-
 		},
 		server: {
-			allowedHosts: ['.local']
+			allowedHosts: ['.local'],
 		},
 	},
 
@@ -44,8 +40,4 @@ export default defineConfig({
 			],
 		],
 	},
-
-	adapter: vercel({
-		edgeMiddleware: true,
-	}),
 });
