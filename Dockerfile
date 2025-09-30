@@ -7,7 +7,7 @@ COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --frozen-lockfile
 COPY . .
 ENV TELEMETRY_DISABLED=1
-CMD ["pnpm", "run", "build"]
+RUN pnpm run build
 
 FROM nginx:stable-alpine AS runner
 WORKDIR /app
