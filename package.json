@@ -6,11 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "astro preview",
     "astro": "astro"
-  },
-  "engines": {
-    "node": "22"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.5",
