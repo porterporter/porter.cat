@@ -1,11 +1,2 @@
-# nixpacks.toml
-
 [variables]
-# Tell nixpacks explicitly to use Node 22
 NIXPACKS_NODE_VERSION = "22"
-
-[phases.build]
-cmds = ["npm install"]
-
-[phases.start]
-cmd = "npm run start"
