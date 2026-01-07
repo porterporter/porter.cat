@@ -1,9 +1,8 @@
 ---
 import Layout from '@/layouts/layout.astro';
 
-import { type CollectionEntry, getCollection } from 'astro:content';
-import { render } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('writing');
@@ -55,6 +54,8 @@ const header = {
 		.replace(/ /g, '-'),
 } satisfies MarkdownHeading;
 headings.unshift(header);
+
+import 'remark-github-blockquote-alert/alert.css';
 ---
 
 <Layout
@@ -72,7 +73,7 @@ headings.unshift(header);
 		</h1>
 		<p class="mt-0">
 			{months[post.data.published.getMonth()]}
-			{post.data.published.getDay()}{nth(post.data.published.getDay())}, {
+			{post.data.published.getDate()}{nth(post.data.published.getDate())}, {
 				post.data.published.getFullYear()
 			}
 		</p>

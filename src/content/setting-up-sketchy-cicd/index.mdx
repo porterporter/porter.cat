@@ -1,0 +1,89 @@
+---
+published: 11-15-2025
+---
+
+## Setup GitLab Runner
+
+GitLab Repository > (Sidebar) Settings > CI/CD > Runners (Expand) > Project Runners > Create Project Runner
+
+Record the URL and Registration Token
+
+### Create Runner Configuration Volume
+
+```bash
+docker volume create gitlab-runner-config
+```
+
+### Register the Runner
+
+```bash
+docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest register
+```
+
+- Enter URL and Token from above
+- Select `docker` as executor
+- Set default image to `alpine:latest`
+- **Add tag:** `production` (this matches the `tags:` in your `.gitlab-ci.yml`)
+
+> [!CAUTION]
+> The following configuration grants the GitLab Runner **full root access to your host machine**. This is necessary to run Docker commands on the host, but comes with serious security implications:
+>
+> - **Anyone who can modify your `.gitlab-ci.yml` file has root access to this machine**
+> - **Anyone who can trigger CI/CD pipelines can execute arbitrary code as root**
+> - Repository access = SSH root access to your server
+>
+> **Only proceed if:**
+> - This is a personal/development project OR dedicated CI/CD machine
+> - You trust everyone with repository access
+> - You understand that a compromised GitLab account = compromised server
+>
+> **Why these settings are needed:**
+> - `user = "root"` - Allows the runner to access the Docker socket
+> - `userns_mode = "host"` - Maintains UID consistency between containers and host
+> - `--userns=host` + Docker socket mount - Enables running Docker commands on the host
+>
+> Treat your GitLab repository access as seriously as you would treat root SSH keys.
+
+### Configure Runner for Docker Socket Access
+
+```bash
+docker run --rm -v gitlab-runner-config:/data alpine sh -c \
+  "sed -i '/network_mtu = 0/a \    user = \"root\"\n    userns_mode = \"host\"' /data/config.toml"
+```
+
+### Start the Runner
+
+```bash
+docker run -d --name gitlab-runner --restart always \
+  --userns=host \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v gitlab-runner-config:/etc/gitlab-runner \
+  gitlab/gitlab-runner:latest
+```
+
+## Pipeline Configuration
+
+Your `.gitlab-ci.yml` should look like this:
+
+```yaml
+deploy-job:
+  stage: deploy
+  tags:
+    - production
+  image: docker:latest
+  variables:
+    DOCKER_HOST: unix:///var/run/docker.sock
+  environment: production
+  script:
+    - docker compose build
+    - docker compose up -d
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: always
+    - when: never
+```
+
+> [!IMPORTANT]
+> **Why `DOCKER_HOST: unix:///var/run/docker.sock` is needed:**
+> 
+> The `docker:latest` image expects to connect to a Docker daemon. By default, it looks for a Docker daemon at `tcp://docker:2375` (Docker-in-Docker). Since you're mounting the host's Docker socket instead, you need to explicitly tell the Docker client where to find it with the `DOCKER_HOST` variable pointing to the Unix socket at `/var/run/docker.sock`.
